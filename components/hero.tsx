@@ -48,11 +48,11 @@ export function Hero() {
             <Linkedin className="size-5" />
           </a>
           <a
-            href="kevin11swoosh@gmail.com"
+            href="mailto:kevin11swoosh@gmail.com"
             className="text-muted-foreground transition-colors hover:text-primary"
             aria-label="Email"
           >
-            <Mail className="size-5" />
+            <Mail className="size-4" />
           </a>
         </div>
 
