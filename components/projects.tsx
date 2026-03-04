@@ -33,27 +33,14 @@ const otherProjects = [
     live: "https://icep-group-2-campusconnect.onrender.com/",
   },
   {
-    title: "GitStats",
+    title: "SchoolRide APP",
     description:
-      "A CLI tool that generates detailed contribution analytics and visualizations from Git repositories.",
-    tech: ["Python", "Click", "Rich", "Git API"],
-    github: "https://github.com",
+      "A mobile app for managing school transportation for children and ride-sharing.",
+    tech: ["React Native", "Node.js", "Supabase"],
+    github: "https://github.com/Tukane01/schoolride.git",
+    live: "https://lovable.dev/projects/6d01732f-9af9-49a7-b288-f619f7559a3f",
   },
-  {
-    title: "NoteQL",
-    description:
-      "A note-taking app with a natural language query engine that lets you search notes using plain English.",
-    tech: ["Next.js", "OpenAI", "Pinecone", "Tailwind"],
-    github: "https://github.com",
-    live: "https://example.com",
-  },
-  {
-    title: "ByteBudget",
-    description:
-      "A privacy-first personal finance tracker that runs entirely in the browser with no server-side storage.",
-    tech: ["Svelte", "IndexedDB", "Chart.js"],
-    github: "https://github.com",
-  },
+  
 ]
 
 export function Projects() {
