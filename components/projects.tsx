@@ -2,6 +2,11 @@ import { ExternalLink, Github, Folder } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { SectionHeading } from "@/components/about"
 
+/* 🔴 CHANGE 1: DO NOT IMPORT FROM PUBLIC
+   Remove this line completely if you had it:
+   import MEF from "public/MEF.png"
+*/
+
 const featuredProjects = [
   {
     title: "MediFileSA",
@@ -10,7 +15,9 @@ const featuredProjects = [
     tech: ["JavaScript", "React", "Node.js", "TypeScript", "PostgreSQL"],
     github: "https://github.com",
     live: "https://example.com",
-    image: "devsync",
+
+    /* 🔴 CHANGE 2: POINT TO IMAGE IN PUBLIC FOLDER */
+    image: "/medifilesa.png",
   },
   {
     title: "Make Education Fashionable (MEF) Campaign Web App",
@@ -18,8 +25,10 @@ const featuredProjects = [
       "A campaign website and web app for MEF (Make Education Fashionable) that centralises all campaign information and makes it easy for students to engage. Features dedicated pages for the campaign story and updates, contact details, and interactive sections like pledges and student testimonials, all built with a clean, responsive UI for mobile and desktop.",
     tech: ["PHP", "CSS", "JavaScript", "MySQL"],
     github: "https://github.com/MICHAELSIBANDA/Group-2-MEF.git",
-    live: "https://example.com",
-    image: "clouddeploy",
+    live: "https://main.dxx5zol880p9w.amplifyapp.com/",
+
+    /* 🔴 CHANGE 2 */
+    image: "/MEF.png",
   },
 ]
 
@@ -40,7 +49,6 @@ const otherProjects = [
     github: "https://github.com/Tukane01/schoolride.git",
     live: "https://lovable.dev/projects/6d01732f-9af9-49a7-b288-f619f7559a3f",
   },
-  
 ]
 
 export function Projects() {
@@ -60,6 +68,7 @@ export function Projects() {
         <h3 className="mb-8 text-center text-xl font-semibold text-foreground">
           Other Noteworthy Projects
         </h3>
+
         <div className="grid gap-4 sm:grid-cols-2">
           {otherProjects.map((project) => (
             <OtherProject key={project.title} project={project} />
@@ -81,17 +90,20 @@ function FeaturedProject({
 
   return (
     <div className="group relative">
-      {/* Project image placeholder */}
+
+      {/* Project Image */}
       <div
         className={`relative overflow-hidden rounded-lg border border-border bg-secondary ${
           isEven ? "md:mr-[40%]" : "md:ml-[40%]"
         }`}
       >
-        <div className="flex aspect-video items-center justify-center bg-secondary">
-          <div className="flex flex-col items-center gap-2 text-muted-foreground/40">
-            <Folder className="size-12" />
-            <span className="font-mono text-xs">{project.image}</span>
-          </div>
+        {/* 🔴 CHANGE 3: REPLACE PLACEHOLDER WITH IMAGE */}
+        <div className="aspect-video overflow-hidden">
+          <img
+            src={project.image}
+            alt={project.title}
+            className="h-full w-full object-cover"
+          />
         </div>
       </div>
 
@@ -102,12 +114,15 @@ function FeaturedProject({
         }`}
       >
         <p className="mb-1 font-mono text-xs text-primary">Featured Project</p>
+
         <h3 className="mb-4 text-2xl font-bold text-foreground">
           {project.title}
         </h3>
+
         <div className="mb-4 rounded-lg border border-border bg-card p-5 text-sm leading-relaxed text-muted-foreground shadow-lg">
           {project.description}
         </div>
+
         <div
           className={`mb-4 flex flex-wrap gap-2 ${
             isEven ? "md:justify-end" : "md:justify-start"
@@ -119,6 +134,7 @@ function FeaturedProject({
             </span>
           ))}
         </div>
+
         <div
           className={`flex items-center gap-4 ${
             isEven ? "md:justify-end" : "md:justify-start"
@@ -129,17 +145,16 @@ function FeaturedProject({
             target="_blank"
             rel="noopener noreferrer"
             className="text-foreground transition-colors hover:text-primary"
-            aria-label={`View ${project.title} on GitHub`}
           >
             <Github className="size-5" />
           </a>
+
           {project.live && (
             <a
               href={project.live}
               target="_blank"
               rel="noopener noreferrer"
               className="text-foreground transition-colors hover:text-primary"
-              aria-label={`View ${project.title} live`}
             >
               <ExternalLink className="size-5" />
             </a>
@@ -157,37 +172,41 @@ function OtherProject({
 }) {
   return (
     <div className="group flex flex-col rounded-lg border border-border bg-card p-6 transition-colors hover:border-primary/30">
+
       <div className="mb-4 flex items-center justify-between">
         <Folder className="size-8 text-primary" />
+
         <div className="flex items-center gap-3">
           <a
             href={project.github}
             target="_blank"
             rel="noopener noreferrer"
             className="text-muted-foreground transition-colors hover:text-primary"
-            aria-label={`View ${project.title} on GitHub`}
           >
             <Github className="size-4" />
           </a>
+
           {project.live && (
             <a
               href={project.live}
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground transition-colors hover:text-primary"
-              aria-label={`View ${project.title} live`}
             >
               <ExternalLink className="size-4" />
             </a>
           )}
         </div>
       </div>
+
       <h3 className="mb-2 text-lg font-semibold text-foreground transition-colors group-hover:text-primary">
         {project.title}
       </h3>
+
       <p className="mb-6 flex-1 text-sm leading-relaxed text-muted-foreground">
         {project.description}
       </p>
+
       <div className="flex flex-wrap gap-2">
         {project.tech.map((t) => (
           <Badge
